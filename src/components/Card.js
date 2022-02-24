@@ -17,7 +17,7 @@ class Card extends React.Component {
       <aside className="block">
         <section className="card">
           <div>
-            <p data-testid="name-card">{ cardName }</p>
+            <p data-testid="name-card" className="card-result">{ cardName }</p>
           </div>
           <div>
             <img
@@ -28,18 +28,38 @@ class Card extends React.Component {
             />
           </div>
           <div>
-            <p data-testid="description-card">{ cardDescription }</p>
+            <p
+              data-testid="description-card"
+              className="card-result"
+            >
+              { cardDescription }
+            </p>
           </div>
           <div>
-            <p data-testid="attr1-card">{`Vida: ${cardAttr1}`}</p>
+            <p
+              data-testid="attr1-card"
+              className="card-result"
+            >
+              {`Vida: ${cardAttr1}`}
+            </p>
           </div>
           <div>
-            <p data-testid="attr2-card">{`Mana: ${cardAttr2}`}</p>
+            <p
+              data-testid="attr2-card"
+              className="card-result"
+            >
+              {`Mana: ${cardAttr2}`}
+            </p>
           </div>
           <div>
-            <p data-testid="attr3-card">{`Conhecimento: ${cardAttr3}`}</p>
+            <p
+              data-testid="attr3-card"
+              className="card-result"
+            >
+              {`Conhecimento: ${cardAttr3}`}
+            </p>
           </div>
-          <div className="row">
+          <div className="row card-result">
             <p data-testid="rare-card">{cardRare}</p>
             { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
           </div>

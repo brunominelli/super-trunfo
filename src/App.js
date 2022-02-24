@@ -150,8 +150,8 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </article>
-          <article>
-            <h1>Todas as cartas</h1>
+          <h1>Todas as cartas</h1>
+          <article className="row">
             { saveButtonState.map((card, index) => (
               <Deck
                 key={ index }

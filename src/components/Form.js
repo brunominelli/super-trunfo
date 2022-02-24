@@ -20,7 +20,7 @@ class Form extends React.Component {
     } = this.props;
     return (
       <form className="block">
-        <label htmlFor="name-input">
+        <label htmlFor="name-input" className="row">
           <span>Nome</span>
           <input
             type="text"
@@ -32,7 +32,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="description-input" className="row">
           <span>Descrição</span>
           <textarea
             data-testid="description-input"
@@ -43,7 +43,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr1-input">
+        <label htmlFor="attr1-input" className="row">
           <span>Vida</span>
           <input
             type="number"
@@ -57,7 +57,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr2-input">
+        <label htmlFor="attr2-input" className="row">
           <span>Mana</span>
           <input
             type="number"
@@ -71,7 +71,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr3-input">
+        <label htmlFor="attr3-input" className="row">
           <span>Conhecimento</span>
           <input
             type="number"
@@ -85,7 +85,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="image-input">
+        <label htmlFor="image-input" className="row">
           <span>Imagem</span>
           <input
             type="text"
@@ -97,7 +97,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="rare-input">
+        <label htmlFor="rare-input" className="row">
           Raridade
           <select
             data-testid="rare-input"
