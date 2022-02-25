@@ -106,6 +106,16 @@ class App extends React.Component {
     }, () => this.checkHasTrunfo()));
   };
 
+  onDeleteButtonClick = ({ target }) => {
+    const deleteCardName = target.value;
+    const { saveButtonState } = this.state;
+    const buttonState = saveButtonState
+      .filter(({ cardName }) => cardName !== deleteCardName);
+    this.setState({
+      saveButtonState: buttonState,
+    }, () => this.checkHasTrunfo());
+  }
+
   render() {
     const {
       cardName,
@@ -151,7 +161,7 @@ class App extends React.Component {
             />
           </article>
           <h1>Todas as cartas</h1>
-          <article className="row">
+          <article className="card-container">
             { saveButtonState.map((card, index) => (
               <Deck
                 key={ index }
@@ -163,6 +173,7 @@ class App extends React.Component {
                 cardImage={ card.cardImage }
                 cardRare={ card.cardRare }
                 cardTrunfo={ card.cardTrunfo }
+                onDeleteButtonClick={ this.onDeleteButtonClick }
               />
             ))}
           </article>

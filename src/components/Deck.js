@@ -12,6 +12,7 @@ class Deck extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      onDeleteButtonClick,
     } = this.props;
     return (
       <section className="card">
@@ -66,6 +67,8 @@ class Deck extends React.Component {
           type="button"
           data-testid="delete-button"
           className="button"
+          value={ cardName }
+          onClick={ onDeleteButtonClick }
         >
           Excluir
         </button>
@@ -83,6 +86,7 @@ Deck.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  onDeleteButtonClick: PropTypes.func.isRequired,
 };
 
 export default Deck;

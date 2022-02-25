@@ -41,15 +41,6 @@ aside {
   padding: 0.5rem;
 }
 
-.card-result {
-  width: 250px;
-  height: 35px;
-  margin: 0.25rem 0rem;
-  padding: 0.5rem;
-  border: 1px solid black;
-  border-radius: 1rem;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -68,6 +59,21 @@ aside {
   height: 150px;
   border: 1px solid black;
   border-radius: 1rem;
+}
+
+.card-result {
+  width: 250px;
+  height: 35px;
+  margin: 0.25rem 0rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 label {
