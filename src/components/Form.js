@@ -115,7 +115,8 @@ class Form extends React.Component {
         {
           !hasTrunfo
             ? (
-              <label htmlFor="trunfo-input">
+              <label htmlFor="trunfo-input" className="row">
+                Super Trunfo
                 <input
                   type="checkbox"
                   data-testid="trunfo-input"
@@ -124,7 +125,6 @@ class Form extends React.Component {
                   checked={ cardTrunfo }
                   onChange={ onInputChange }
                 />
-                Super Trunfo
               </label>
             ) : <span>Você já tem um Super Trunfo em seu baralho</span>
         }

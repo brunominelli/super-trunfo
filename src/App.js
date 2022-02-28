@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Deck from './components/Deck';
 import Form from './components/Form';
+import Search from './components/Search';
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +18,9 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       saveButton: true,
-      saveButtonState: [],
+      cardDeck: [],
+      cardFilter: [],
+      cardNameFilter: '',
     };
   }
 
@@ -60,9 +63,9 @@ class App extends React.Component {
   };
 
   checkHasTrunfo = () => {
-    const { saveButtonState } = this.state;
+    const { cardDeck } = this.state;
     this.setState({
-      hasTrunfo: saveButtonState.some((card) => card.cardTrunfo),
+      hasTrunfo: cardDeck.some((card) => card.cardTrunfo),
     });
   }
 
@@ -77,7 +80,7 @@ class App extends React.Component {
       cardAttr3,
       cardRare,
       cardTrunfo,
-      saveButtonState,
+      cardDeck,
     } = this.state;
 
     const saveCard = {
@@ -92,7 +95,7 @@ class App extends React.Component {
     };
 
     this.setState({
-      saveButtonState: [...saveButtonState, saveCard],
+      cardDeck: [...cardDeck, saveCard],
     }, () => this.setState({
       cardName: '',
       cardDescription: '',
@@ -108,12 +111,27 @@ class App extends React.Component {
 
   onDeleteButtonClick = ({ target }) => {
     const deleteCardName = target.value;
-    const { saveButtonState } = this.state;
-    const buttonState = saveButtonState
+    const { cardDeck } = this.state;
+    const buttonState = cardDeck
       .filter(({ cardName }) => cardName !== deleteCardName);
     this.setState({
-      saveButtonState: buttonState,
+      cardDeck: buttonState,
     }, () => this.checkHasTrunfo());
+  }
+
+  onReadSearchInput = ({ target }) => {
+    const valueLowerCase = target.value.toLowerCase();
+    const { cardDeck } = this.state;
+    const searchResult = cardDeck.filter(({ cardName }) => {
+      const cardNameLowerCase = cardName.toLowerCase();
+      return cardNameLowerCase.includes(valueLowerCase);
+    });
+    console.log(searchResult);
+    console.log(target);
+    this.setState({
+      cardFilter: searchResult,
+      cardNameFilter: target.value,
+    });
   }
 
   render() {
@@ -127,9 +145,12 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       saveButton,
-      saveButtonState,
+      cardDeck,
       hasTrunfo,
+      cardFilter,
+      cardNameFilter,
     } = this.state;
+
     return (
       <>
         <h1>Tryunfo</h1>
@@ -161,21 +182,26 @@ class App extends React.Component {
             />
           </article>
           <h1>Todas as cartas</h1>
+          <Search
+            onReadSearchInput={ this.onReadSearchInput }
+            cardNameFilter={ cardNameFilter }
+          />
           <article className="card-container">
-            { saveButtonState.map((card, index) => (
-              <Deck
-                key={ index }
-                cardName={ card.cardName }
-                cardDescription={ card.cardDescription }
-                cardAttr1={ card.cardAttr1 }
-                cardAttr2={ card.cardAttr2 }
-                cardAttr3={ card.cardAttr3 }
-                cardImage={ card.cardImage }
-                cardRare={ card.cardRare }
-                cardTrunfo={ card.cardTrunfo }
-                onDeleteButtonClick={ this.onDeleteButtonClick }
-              />
-            ))}
+            <section className="row">
+              { (cardFilter.length || cardNameFilter ? cardFilter : cardDeck)
+                .map((card, index) => (<Deck
+                  key={ index }
+                  cardName={ card.cardName }
+                  cardDescription={ card.cardDescription }
+                  cardAttr1={ card.cardAttr1 }
+                  cardAttr2={ card.cardAttr2 }
+                  cardAttr3={ card.cardAttr3 }
+                  cardImage={ card.cardImage }
+                  cardRare={ card.cardRare }
+                  cardTrunfo={ card.cardTrunfo }
+                  onDeleteButtonClick={ this.onDeleteButtonClick }
+                />))}
+            </section>
           </article>
         </main>
       </>
