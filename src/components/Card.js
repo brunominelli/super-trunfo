@@ -14,19 +14,17 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
     return (
-      <aside className="block">
+      <article className="block">
         <section className="card">
           <div>
             <p data-testid="name-card" className="card-result">{ cardName }</p>
           </div>
-          <div>
-            <img
-              src={ cardImage }
-              alt={ cardName }
-              className="card-image"
-              data-testid="image-card"
-            />
-          </div>
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            className="card-image"
+            data-testid="image-card"
+          />
           <div>
             <p
               data-testid="description-card"
@@ -35,36 +33,34 @@ class Card extends React.Component {
               { cardDescription }
             </p>
           </div>
-          <div>
-            <p
-              data-testid="attr1-card"
-              className="card-result"
-            >
-              {`Vida: ${cardAttr1}`}
-            </p>
+          <div
+            data-testid="attr1-card"
+            className="card-result row"
+          >
+            <p>Vida</p>
+            { cardAttr1 }
           </div>
-          <div>
-            <p
-              data-testid="attr2-card"
-              className="card-result"
-            >
-              {`Mana: ${cardAttr2}`}
-            </p>
+          <div
+            data-testid="attr2-card"
+            className="card-result row"
+          >
+            <p>Mana</p>
+            { cardAttr2 }
           </div>
-          <div>
-            <p
-              data-testid="attr3-card"
-              className="card-result"
-            >
-              {`Conhecimento: ${cardAttr3}`}
-            </p>
+
+          <div
+            data-testid="attr3-card"
+            className="card-result row"
+          >
+            <p>Conhecimento</p>
+            { cardAttr3 }
           </div>
           <div className="row card-result">
             <p data-testid="rare-card">{cardRare}</p>
             { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
           </div>
         </section>
-      </aside>
+      </article>
     );
   }
 }

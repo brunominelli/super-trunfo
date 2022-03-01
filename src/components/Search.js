@@ -14,7 +14,7 @@ class Search extends React.Component {
     } = this.props;
     return (
       <form>
-        <label htmlFor="name-filter" className="row">
+        <label htmlFor="name-filter" className="label row">
           Nome
           <input
             data-testid="name-filter"
@@ -26,7 +26,7 @@ class Search extends React.Component {
             onChange={ onReadSearchInput }
           />
         </label>
-        <label htmlFor="rare-filter">
+        <label htmlFor="rare-filter" className="label row">
           Raridade
           <select
             data-testid="rare-filter"
@@ -48,7 +48,7 @@ class Search extends React.Component {
             }
           </select>
         </label>
-        <label htmlFor="trunfo-filter" className="row">
+        <label htmlFor="trunfo-filter" className="label row">
           Super Trunfo
           <input
             data-testid="trunfo-filter"

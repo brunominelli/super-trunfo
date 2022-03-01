@@ -15,64 +15,68 @@ class Deck extends React.Component {
       onDeleteButtonClick,
     } = this.props;
     return (
-      <section className="card">
-        <div>
-          <p data-testid="name-card" className="card-result">{ cardName }</p>
-        </div>
-        <div>
-          <img
-            src={ cardImage }
-            alt={ cardName }
-            className="card-image"
-            data-testid="image-card"
-          />
-        </div>
-        <div>
-          <p
-            data-testid="description-card"
-            className="card-result"
+      <article className="card-block">
+        <section className="card">
+          <div>
+            <p data-testid="name-card" className="card-result">{ cardName }</p>
+          </div>
+          <div>
+            <img
+              src={ cardImage }
+              alt={ cardName }
+              className="card-image"
+              data-testid="image-card"
+            />
+          </div>
+          <div>
+            <p
+              data-testid="description-card"
+              className="card-result"
+            >
+              { cardDescription }
+            </p>
+          </div>
+          <div>
+            <p
+              data-testid="attr1-card"
+              className="card-result"
+            >
+              {`Vida: ${cardAttr1}`}
+            </p>
+          </div>
+          <div>
+            <p
+              data-testid="attr2-card"
+              className="card-result"
+            >
+              {`Mana: ${cardAttr2}`}
+            </p>
+          </div>
+          <div>
+            <p
+              data-testid="attr3-card"
+              className="card-result"
+            >
+              {`Conhecimento: ${cardAttr3}`}
+            </p>
+          </div>
+          <div className="row card-result">
+            <p data-testid="rare-card">{cardRare}</p>
+            { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
+          </div>
+        </section>
+        <section>
+          <button
+            type="button"
+            data-testid="delete-button"
+            className="button"
+            value={ cardName }
+            onClick={ onDeleteButtonClick }
           >
-            { cardDescription }
-          </p>
-        </div>
-        <div>
-          <p
-            data-testid="attr1-card"
-            className="card-result"
-          >
-            {`Vida: ${cardAttr1}`}
-          </p>
-        </div>
-        <div>
-          <p
-            data-testid="attr2-card"
-            className="card-result"
-          >
-            {`Mana: ${cardAttr2}`}
-          </p>
-        </div>
-        <div>
-          <p
-            data-testid="attr3-card"
-            className="card-result"
-          >
-            {`Conhecimento: ${cardAttr3}`}
-          </p>
-        </div>
-        <div className="row card-result">
-          <p data-testid="rare-card">{cardRare}</p>
-          { cardTrunfo ? <p data-testid="trunfo-card">Super Trunfo</p> : '' }
-        </div>
-        <button
-          type="button"
-          data-testid="delete-button"
-          className="button"
-          value={ cardName }
-          onClick={ onDeleteButtonClick }
-        >
-          Excluir
-        </button>
-      </section>
+            Excluir
+          </button>
+        </section>
+      </article>
     );
   }
 }

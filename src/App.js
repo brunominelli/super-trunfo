@@ -1,7 +1,9 @@
 import React from 'react';
 import Card from './components/Card';
 import Deck from './components/Deck';
+import Footer from './components/Footer';
 import Form from './components/Form';
+import Header from './components/Header';
 import Search from './components/Search';
 
 class App extends React.Component {
@@ -179,7 +181,7 @@ class App extends React.Component {
 
     return (
       <>
-        <h1>Tryunfo</h1>
+        <Header />
         <main className="container">
           <article className="row">
             <Form
@@ -207,7 +209,7 @@ class App extends React.Component {
               cardTrunfo={ cardTrunfo }
             />
           </article>
-          <h1>Todas as cartas</h1>
+          <h1 className="title">Todas as cartas</h1>
           <Search
             onReadSearchInput={ this.onReadSearchInput }
             onReadSearchSelect={ this.onReadSearchSelect }
@@ -238,6 +240,7 @@ class App extends React.Component {
             </section>
           </article>
         </main>
+        <Footer />
       </>
     );
   }
