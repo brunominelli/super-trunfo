@@ -21,6 +21,8 @@ class App extends React.Component {
       cardDeck: [],
       cardFilter: [],
       cardNameFilter: '',
+      cardRareFilter: 'todas',
+      cardTrunfoFilter: false,
     };
   }
 
@@ -120,17 +122,32 @@ class App extends React.Component {
   }
 
   onReadSearchInput = ({ target }) => {
-    const valueLowerCase = target.value.toLowerCase();
     const { cardDeck } = this.state;
-    const searchResult = cardDeck.filter(({ cardName }) => {
+    const valueLowerCase = target.value.toLowerCase();
+    const searchNameResult = cardDeck.filter(({ cardName }) => {
       const cardNameLowerCase = cardName.toLowerCase();
       return cardNameLowerCase.includes(valueLowerCase);
     });
-    console.log(searchResult);
-    console.log(target);
     this.setState({
-      cardFilter: searchResult,
+      cardFilter: searchNameResult,
       cardNameFilter: target.value,
+    });
+  }
+
+  onReadSearchSelect = ({ target }) => {
+    const { cardDeck } = this.state;
+    const valueLowerCase = target.value.toLowerCase();
+    const searchRareResult = cardDeck.filter(({ cardRare }) => {
+      const cardRareLowerCase = cardRare.toLowerCase();
+      return cardRareLowerCase.includes(valueLowerCase);
+    });
+
+    const cardRareNameResult = searchRareResult
+      .filter(({ cardRare }) => cardRare === target.value);
+
+    this.setState({
+      cardFilter: cardRareNameResult,
+      cardRareFilter: target.value,
     });
   }
 
@@ -149,6 +166,7 @@ class App extends React.Component {
       hasTrunfo,
       cardFilter,
       cardNameFilter,
+      cardRareFilter,
     } = this.state;
 
     return (
@@ -184,11 +202,16 @@ class App extends React.Component {
           <h1>Todas as cartas</h1>
           <Search
             onReadSearchInput={ this.onReadSearchInput }
+            onReadSearchSelect={ this.onReadSearchSelect }
             cardNameFilter={ cardNameFilter }
+            cardRareFilter={ cardRareFilter }
           />
           <article className="card-container">
             <section className="row">
-              { (cardFilter.length || cardNameFilter ? cardFilter : cardDeck)
+              { (cardFilter.length
+                || cardNameFilter
+                || cardRareFilter
+                !== 'todas' ? cardFilter : cardDeck)
                 .map((card, index) => (<Deck
                   key={ index }
                   cardName={ card.cardName }

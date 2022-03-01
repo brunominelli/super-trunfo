@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import searchOptions from '../data/searchOptions';
 
 class Search extends React.Component {
   render() {
-    const { onReadSearchInput, cardNameFilter } = this.props;
+    const {
+      cardNameFilter,
+      cardRareFilter,
+      onReadSearchInput,
+      onReadSearchSelect,
+    } = this.props;
     return (
       <form>
         <label htmlFor="name-filter" className="row">
@@ -12,10 +18,31 @@ class Search extends React.Component {
             data-testid="name-filter"
             type="text"
             name="cardNameFilter"
-            value={ cardNameFilter }
             className="form-input"
+            value={ cardNameFilter }
             onChange={ onReadSearchInput }
           />
+        </label>
+        <label htmlFor="rare-filter">
+          Raridade
+          <select
+            data-testid="rare-filter"
+            name="rare-filter"
+            className="form-input"
+            value={ cardRareFilter }
+            onChange={ onReadSearchSelect }
+          >
+            {
+              searchOptions
+                .map((option) => (
+                  <option
+                    key={ option }
+                    value={ option }
+                  >
+                    { option }
+                  </option>))
+            }
+          </select>
         </label>
       </form>
     );
@@ -23,8 +50,10 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  onReadSearchInput: PropTypes.func.isRequired,
   cardNameFilter: PropTypes.string.isRequired,
+  cardRareFilter: PropTypes.string.isRequired,
+  onReadSearchInput: PropTypes.func.isRequired,
+  onReadSearchSelect: PropTypes.func.isRequired,
 };
 
 export default Search;
