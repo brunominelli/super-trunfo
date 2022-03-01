@@ -141,13 +141,20 @@ class App extends React.Component {
       const cardRareLowerCase = cardRare.toLowerCase();
       return cardRareLowerCase.includes(valueLowerCase);
     });
-
     const cardRareNameResult = searchRareResult
       .filter(({ cardRare }) => cardRare === target.value);
-
     this.setState({
       cardFilter: cardRareNameResult,
       cardRareFilter: target.value,
+    });
+  }
+
+  onReadSearchCheckbox = ({ target }) => {
+    const { cardDeck } = this.state;
+    const searchTrunfoResult = cardDeck
+      .filter(({ cardTrunfo }) => cardTrunfo === target.checked);
+    this.setState({
+      cardFilter: searchTrunfoResult,
     });
   }
 
@@ -167,6 +174,7 @@ class App extends React.Component {
       cardFilter,
       cardNameFilter,
       cardRareFilter,
+      cardTrunfoFilter,
     } = this.state;
 
     return (
@@ -203,15 +211,18 @@ class App extends React.Component {
           <Search
             onReadSearchInput={ this.onReadSearchInput }
             onReadSearchSelect={ this.onReadSearchSelect }
+            onReadSearchCheckbox={ this.onReadSearchCheckbox }
             cardNameFilter={ cardNameFilter }
             cardRareFilter={ cardRareFilter }
+            cardTrunfoFilter={ cardTrunfoFilter }
           />
           <article className="card-container">
             <section className="row">
               { (cardFilter.length
                 || cardNameFilter
-                || cardRareFilter
-                !== 'todas' ? cardFilter : cardDeck)
+                || cardRareFilter !== 'todas'
+                || cardTrunfoFilter
+                ? cardFilter : cardDeck)
                 .map((card, index) => (<Deck
                   key={ index }
                   cardName={ card.cardName }

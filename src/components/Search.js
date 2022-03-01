@@ -7,8 +7,10 @@ class Search extends React.Component {
     const {
       cardNameFilter,
       cardRareFilter,
+      cardTrunfoFilter,
       onReadSearchInput,
       onReadSearchSelect,
+      onReadSearchCheckbox,
     } = this.props;
     return (
       <form>
@@ -17,6 +19,7 @@ class Search extends React.Component {
           <input
             data-testid="name-filter"
             type="text"
+            id="name-filter"
             name="cardNameFilter"
             className="form-input"
             value={ cardNameFilter }
@@ -27,7 +30,8 @@ class Search extends React.Component {
           Raridade
           <select
             data-testid="rare-filter"
-            name="rare-filter"
+            id="rare-filter"
+            name="cardRareFilter"
             className="form-input"
             value={ cardRareFilter }
             onChange={ onReadSearchSelect }
@@ -44,6 +48,17 @@ class Search extends React.Component {
             }
           </select>
         </label>
+        <label htmlFor="trunfo-filter" className="row">
+          Super Trunfo
+          <input
+            data-testid="trunfo-filter"
+            type="checkbox"
+            id="trunfo-filter"
+            name="cardTrunfoFilter"
+            value={ cardTrunfoFilter }
+            onChange={ onReadSearchCheckbox }
+          />
+        </label>
       </form>
     );
   }
@@ -52,8 +67,10 @@ class Search extends React.Component {
 Search.propTypes = {
   cardNameFilter: PropTypes.string.isRequired,
   cardRareFilter: PropTypes.string.isRequired,
+  cardTrunfoFilter: PropTypes.bool.isRequired,
   onReadSearchInput: PropTypes.func.isRequired,
   onReadSearchSelect: PropTypes.func.isRequired,
+  onReadSearchCheckbox: PropTypes.func.isRequired,
 };
 
 export default Search;
