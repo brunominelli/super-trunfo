@@ -36,29 +36,27 @@ class Deck extends React.Component {
               { cardDescription }
             </p>
           </div>
-          <div>
-            <p
-              data-testid="attr1-card"
-              className="card-result"
-            >
-              {`Vida: ${cardAttr1}`}
-            </p>
+          <div
+            data-testid="attr1-card"
+            className="card-result row"
+          >
+            <p>Vida</p>
+            { cardAttr1 }
           </div>
-          <div>
-            <p
-              data-testid="attr2-card"
-              className="card-result"
-            >
-              {`Mana: ${cardAttr2}`}
-            </p>
+          <div
+            data-testid="attr2-card"
+            className="card-result row"
+          >
+            <p>Mana</p>
+            { cardAttr2 }
           </div>
-          <div>
-            <p
-              data-testid="attr3-card"
-              className="card-result"
-            >
-              {`Conhecimento: ${cardAttr3}`}
-            </p>
+
+          <div
+            data-testid="attr3-card"
+            className="card-result row"
+          >
+            <p>Conhecimento</p>
+            { cardAttr3 }
           </div>
           <div className="row card-result">
             <p data-testid="rare-card">{cardRare}</p>

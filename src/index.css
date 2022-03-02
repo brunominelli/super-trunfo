@@ -33,7 +33,7 @@
 .button {
   border: none;
   background: none;
-  color: var(--light-grey);
+  color: var(--dark-grey);
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: bold;
@@ -42,6 +42,10 @@
   text-decoration: none;
   text-transform: none;
   transition: 0.75s;
+}
+
+.button:hover {
+  color: var(--yellow);
 }
 
 .nav {
@@ -62,7 +66,11 @@
   text-transform: none;
 }
 
-.button:hover,
+.nav .button {
+  color: var(--light-grey);
+}
+
+.nav button:hover,
 .nav a:hover {
   color: var(--yellow);
 }
@@ -88,7 +96,7 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 
@@ -109,7 +117,7 @@
   width: 250px;
   height: 500px;
   text-transform: capitalize;
-  margin: 1rem;
+  margin: 0.74rem;
   padding: 1rem;
   border: 1px solid black;
   border-radius: 1rem;
@@ -129,15 +137,17 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
-  object-position: 1px 1px;
   border: 1px solid black;
   border-radius: 1rem;
 }
 
 .card-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 200px;
   height: 35px;
-  margin: 0.25rem 0rem;
+  margin: 0.2rem 0rem;
   padding: 0.5rem;
   border: 1px solid var(--light-grey);
   border-radius: 1rem;
@@ -165,4 +175,21 @@
   font-weight: bold;
   padding: 2.75rem;
   background-color: var(--light-grey);
+}
+
+@media print {
+  .header,
+  .footer,
+  .block,
+  .title,
+  .button,
+  form {
+    display: none;
+  }
+
+  .card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
